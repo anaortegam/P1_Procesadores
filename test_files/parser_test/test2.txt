@@ -1,0 +1,14 @@
+{
+ajson : "hola",
+clave: TR,
+CLAVE: FL,
+clave_vacia : "",
+"clave_nula" : NULL,
+clave_anidada : {
+"hola": "adios",
+mayor : 1 < 5,
+"ruben": "ana",
+clave_vaciaajson : {}
+},
+fin : "FIN",
+}

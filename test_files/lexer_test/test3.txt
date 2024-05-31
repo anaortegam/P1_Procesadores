@@ -1,0 +1,15 @@
+{}
+[]
+[56.1<=]
+<
+>
+>=
+<=
+==
+10.9 == 109
+0 < 2
+hola:jose,soya_jose
+:
+,
+TR,FL, NULL:   TRAS,NULLY
+{HOLA }

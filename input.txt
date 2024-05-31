@@ -1,0 +1,23 @@
+{
+    clave_numero: 10000000000 < 0b10000,
+    manolo: 1 == 4,
+    "a": "asdasd",
+    manola: {
+        "_AS": 12,
+        claveanidada: ""
+    },
+    clave : 9 < 3,
+ hola : "ana",
+ "hola" : "ana",
+ clave_vacia : {},
+ "pedrt" : 10.7,
+ si : 10 == 10,
+ holafgf : "",
+ objeto : [
+    {a : 3, b: 7},
+    {a: 1},
+    {hika : "TL"},
+    {pol : 10e3}
+
+ ]
+}

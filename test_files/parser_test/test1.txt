@@ -1,0 +1,7 @@
+{
+    comparacion1 : 5 == 4,
+    comparacion2 : 0x01AA1 < 0765,
+    comparacion3 : 10e-3 <= 0.01,
+    comparacion4 : 0b010111 > 0XAF,
+    comparacion5 : 10e45 >= 10939999043e2,
+}

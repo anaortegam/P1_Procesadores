@@ -1,0 +1,522 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> ajson
+Rule 1     ajson -> LBRACKET contents RBRACKET
+Rule 2     ajson -> LBRACKET RBRACKET
+Rule 3     contents -> key DOS_PUNTOS value opcional
+Rule 4     contents -> key DOS_PUNTOS value COMA contents
+Rule 5     opcional -> COMA
+Rule 6     opcional -> <empty>
+Rule 7     key -> STR_CON_COMILLAS
+Rule 8     key -> STR_SIN_COMILLAS
+Rule 9     value -> ajson
+Rule 10    value -> operation
+Rule 11    value -> NUMBER
+Rule 12    value -> other
+Rule 13    value -> arrayobjects
+Rule 14    arrayobjects -> LCORCHETE valores RCORCHETE
+Rule 15    arrayobjects -> LCORCHETE RCORCHETE
+Rule 16    valores -> ajson opcional
+Rule 17    valores -> ajson COMA valores
+Rule 18    operation -> menor
+Rule 19    operation -> mayor
+Rule 20    operation -> igual
+Rule 21    operation -> mayigual
+Rule 22    operation -> menigual
+Rule 23    menor -> NUMBER MENOR NUMBER
+Rule 24    mayor -> NUMBER MAYOR NUMBER
+Rule 25    igual -> NUMBER IGUAL NUMBER
+Rule 26    mayigual -> NUMBER MAYIGUAL NUMBER
+Rule 27    menigual -> NUMBER MENIGUAL NUMBER
+Rule 28    other -> TR
+Rule 29    other -> FL
+Rule 30    other -> NULL
+Rule 31    other -> STR_CON_COMILLAS
+
+Terminals, with rules where they appear
+
+COMA                 : 4 5 17
+DOS_PUNTOS           : 3 4
+FL                   : 29
+IGUAL                : 25
+LBRACKET             : 1 2
+LCORCHETE            : 14 15
+MAYIGUAL             : 26
+MAYOR                : 24
+MENIGUAL             : 27
+MENOR                : 23
+NULL                 : 30
+NUMBER               : 11 23 23 24 24 25 25 26 26 27 27
+RBRACKET             : 1 2
+RCORCHETE            : 14 15
+STR_CON_COMILLAS     : 7 31
+STR_SIN_COMILLAS     : 8
+TR                   : 28
+error                : 
+
+Nonterminals, with rules where they appear
+
+ajson                : 9 16 17 0
+arrayobjects         : 13
+contents             : 1 4
+igual                : 20
+key                  : 3 4
+mayigual             : 21
+mayor                : 19
+menigual             : 22
+menor                : 18
+opcional             : 3 16
+operation            : 10
+other                : 12
+valores              : 14 17
+value                : 3 4
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . ajson
+    (1) ajson -> . LBRACKET contents RBRACKET
+    (2) ajson -> . LBRACKET RBRACKET
+
+    LBRACKET        shift and go to state 2
+
+    ajson                          shift and go to state 1
+
+state 1
+
+    (0) S' -> ajson .
+
+
+
+state 2
+
+    (1) ajson -> LBRACKET . contents RBRACKET
+    (2) ajson -> LBRACKET . RBRACKET
+    (3) contents -> . key DOS_PUNTOS value opcional
+    (4) contents -> . key DOS_PUNTOS value COMA contents
+    (7) key -> . STR_CON_COMILLAS
+    (8) key -> . STR_SIN_COMILLAS
+
+    RBRACKET        shift and go to state 4
+    STR_CON_COMILLAS shift and go to state 6
+    STR_SIN_COMILLAS shift and go to state 7
+
+    contents                       shift and go to state 3
+    key                            shift and go to state 5
+
+state 3
+
+    (1) ajson -> LBRACKET contents . RBRACKET
+
+    RBRACKET        shift and go to state 8
+
+
+state 4
+
+    (2) ajson -> LBRACKET RBRACKET .
+
+    $end            reduce using rule 2 (ajson -> LBRACKET RBRACKET .)
+    COMA            reduce using rule 2 (ajson -> LBRACKET RBRACKET .)
+    RBRACKET        reduce using rule 2 (ajson -> LBRACKET RBRACKET .)
+    RCORCHETE       reduce using rule 2 (ajson -> LBRACKET RBRACKET .)
+
+
+state 5
+
+    (3) contents -> key . DOS_PUNTOS value opcional
+    (4) contents -> key . DOS_PUNTOS value COMA contents
+
+    DOS_PUNTOS      shift and go to state 9
+
+
+state 6
+
+    (7) key -> STR_CON_COMILLAS .
+
+    DOS_PUNTOS      reduce using rule 7 (key -> STR_CON_COMILLAS .)
+
+
+state 7
+
+    (8) key -> STR_SIN_COMILLAS .
+
+    DOS_PUNTOS      reduce using rule 8 (key -> STR_SIN_COMILLAS .)
+
+
+state 8
+
+    (1) ajson -> LBRACKET contents RBRACKET .
+
+    $end            reduce using rule 1 (ajson -> LBRACKET contents RBRACKET .)
+    COMA            reduce using rule 1 (ajson -> LBRACKET contents RBRACKET .)
+    RBRACKET        reduce using rule 1 (ajson -> LBRACKET contents RBRACKET .)
+    RCORCHETE       reduce using rule 1 (ajson -> LBRACKET contents RBRACKET .)
+
+
+state 9
+
+    (3) contents -> key DOS_PUNTOS . value opcional
+    (4) contents -> key DOS_PUNTOS . value COMA contents
+    (9) value -> . ajson
+    (10) value -> . operation
+    (11) value -> . NUMBER
+    (12) value -> . other
+    (13) value -> . arrayobjects
+    (1) ajson -> . LBRACKET contents RBRACKET
+    (2) ajson -> . LBRACKET RBRACKET
+    (18) operation -> . menor
+    (19) operation -> . mayor
+    (20) operation -> . igual
+    (21) operation -> . mayigual
+    (22) operation -> . menigual
+    (28) other -> . TR
+    (29) other -> . FL
+    (30) other -> . NULL
+    (31) other -> . STR_CON_COMILLAS
+    (14) arrayobjects -> . LCORCHETE valores RCORCHETE
+    (15) arrayobjects -> . LCORCHETE RCORCHETE
+    (23) menor -> . NUMBER MENOR NUMBER
+    (24) mayor -> . NUMBER MAYOR NUMBER
+    (25) igual -> . NUMBER IGUAL NUMBER
+    (26) mayigual -> . NUMBER MAYIGUAL NUMBER
+    (27) menigual -> . NUMBER MENIGUAL NUMBER
+
+    NUMBER          shift and go to state 13
+    LBRACKET        shift and go to state 2
+    TR              shift and go to state 21
+    FL              shift and go to state 22
+    NULL            shift and go to state 23
+    STR_CON_COMILLAS shift and go to state 24
+    LCORCHETE       shift and go to state 25
+
+    value                          shift and go to state 10
+    ajson                          shift and go to state 11
+    operation                      shift and go to state 12
+    other                          shift and go to state 14
+    arrayobjects                   shift and go to state 15
+    menor                          shift and go to state 16
+    mayor                          shift and go to state 17
+    igual                          shift and go to state 18
+    mayigual                       shift and go to state 19
+    menigual                       shift and go to state 20
+
+state 10
+
+    (3) contents -> key DOS_PUNTOS value . opcional
+    (4) contents -> key DOS_PUNTOS value . COMA contents
+    (5) opcional -> . COMA
+    (6) opcional -> .
+
+    COMA            shift and go to state 27
+    RBRACKET        reduce using rule 6 (opcional -> .)
+
+    opcional                       shift and go to state 26
+
+state 11
+
+    (9) value -> ajson .
+
+    COMA            reduce using rule 9 (value -> ajson .)
+    RBRACKET        reduce using rule 9 (value -> ajson .)
+
+
+state 12
+
+    (10) value -> operation .
+
+    COMA            reduce using rule 10 (value -> operation .)
+    RBRACKET        reduce using rule 10 (value -> operation .)
+
+
+state 13
+
+    (11) value -> NUMBER .
+    (23) menor -> NUMBER . MENOR NUMBER
+    (24) mayor -> NUMBER . MAYOR NUMBER
+    (25) igual -> NUMBER . IGUAL NUMBER
+    (26) mayigual -> NUMBER . MAYIGUAL NUMBER
+    (27) menigual -> NUMBER . MENIGUAL NUMBER
+
+    COMA            reduce using rule 11 (value -> NUMBER .)
+    RBRACKET        reduce using rule 11 (value -> NUMBER .)
+    MENOR           shift and go to state 28
+    MAYOR           shift and go to state 29
+    IGUAL           shift and go to state 30
+    MAYIGUAL        shift and go to state 31
+    MENIGUAL        shift and go to state 32
+
+
+state 14
+
+    (12) value -> other .
+
+    COMA            reduce using rule 12 (value -> other .)
+    RBRACKET        reduce using rule 12 (value -> other .)
+
+
+state 15
+
+    (13) value -> arrayobjects .
+
+    COMA            reduce using rule 13 (value -> arrayobjects .)
+    RBRACKET        reduce using rule 13 (value -> arrayobjects .)
+
+
+state 16
+
+    (18) operation -> menor .
+
+    COMA            reduce using rule 18 (operation -> menor .)
+    RBRACKET        reduce using rule 18 (operation -> menor .)
+
+
+state 17
+
+    (19) operation -> mayor .
+
+    COMA            reduce using rule 19 (operation -> mayor .)
+    RBRACKET        reduce using rule 19 (operation -> mayor .)
+
+
+state 18
+
+    (20) operation -> igual .
+
+    COMA            reduce using rule 20 (operation -> igual .)
+    RBRACKET        reduce using rule 20 (operation -> igual .)
+
+
+state 19
+
+    (21) operation -> mayigual .
+
+    COMA            reduce using rule 21 (operation -> mayigual .)
+    RBRACKET        reduce using rule 21 (operation -> mayigual .)
+
+
+state 20
+
+    (22) operation -> menigual .
+
+    COMA            reduce using rule 22 (operation -> menigual .)
+    RBRACKET        reduce using rule 22 (operation -> menigual .)
+
+
+state 21
+
+    (28) other -> TR .
+
+    COMA            reduce using rule 28 (other -> TR .)
+    RBRACKET        reduce using rule 28 (other -> TR .)
+
+
+state 22
+
+    (29) other -> FL .
+
+    COMA            reduce using rule 29 (other -> FL .)
+    RBRACKET        reduce using rule 29 (other -> FL .)
+
+
+state 23
+
+    (30) other -> NULL .
+
+    COMA            reduce using rule 30 (other -> NULL .)
+    RBRACKET        reduce using rule 30 (other -> NULL .)
+
+
+state 24
+
+    (31) other -> STR_CON_COMILLAS .
+
+    COMA            reduce using rule 31 (other -> STR_CON_COMILLAS .)
+    RBRACKET        reduce using rule 31 (other -> STR_CON_COMILLAS .)
+
+
+state 25
+
+    (14) arrayobjects -> LCORCHETE . valores RCORCHETE
+    (15) arrayobjects -> LCORCHETE . RCORCHETE
+    (16) valores -> . ajson opcional
+    (17) valores -> . ajson COMA valores
+    (1) ajson -> . LBRACKET contents RBRACKET
+    (2) ajson -> . LBRACKET RBRACKET
+
+    RCORCHETE       shift and go to state 34
+    LBRACKET        shift and go to state 2
+
+    valores                        shift and go to state 33
+    ajson                          shift and go to state 35
+
+state 26
+
+    (3) contents -> key DOS_PUNTOS value opcional .
+
+    RBRACKET        reduce using rule 3 (contents -> key DOS_PUNTOS value opcional .)
+
+
+state 27
+
+    (4) contents -> key DOS_PUNTOS value COMA . contents
+    (5) opcional -> COMA .
+    (3) contents -> . key DOS_PUNTOS value opcional
+    (4) contents -> . key DOS_PUNTOS value COMA contents
+    (7) key -> . STR_CON_COMILLAS
+    (8) key -> . STR_SIN_COMILLAS
+
+    RBRACKET        reduce using rule 5 (opcional -> COMA .)
+    STR_CON_COMILLAS shift and go to state 6
+    STR_SIN_COMILLAS shift and go to state 7
+
+    key                            shift and go to state 5
+    contents                       shift and go to state 36
+
+state 28
+
+    (23) menor -> NUMBER MENOR . NUMBER
+
+    NUMBER          shift and go to state 37
+
+
+state 29
+
+    (24) mayor -> NUMBER MAYOR . NUMBER
+
+    NUMBER          shift and go to state 38
+
+
+state 30
+
+    (25) igual -> NUMBER IGUAL . NUMBER
+
+    NUMBER          shift and go to state 39
+
+
+state 31
+
+    (26) mayigual -> NUMBER MAYIGUAL . NUMBER
+
+    NUMBER          shift and go to state 40
+
+
+state 32
+
+    (27) menigual -> NUMBER MENIGUAL . NUMBER
+
+    NUMBER          shift and go to state 41
+
+
+state 33
+
+    (14) arrayobjects -> LCORCHETE valores . RCORCHETE
+
+    RCORCHETE       shift and go to state 42
+
+
+state 34
+
+    (15) arrayobjects -> LCORCHETE RCORCHETE .
+
+    COMA            reduce using rule 15 (arrayobjects -> LCORCHETE RCORCHETE .)
+    RBRACKET        reduce using rule 15 (arrayobjects -> LCORCHETE RCORCHETE .)
+
+
+state 35
+
+    (16) valores -> ajson . opcional
+    (17) valores -> ajson . COMA valores
+    (5) opcional -> . COMA
+    (6) opcional -> .
+
+    COMA            shift and go to state 44
+    RCORCHETE       reduce using rule 6 (opcional -> .)
+
+    opcional                       shift and go to state 43
+
+state 36
+
+    (4) contents -> key DOS_PUNTOS value COMA contents .
+
+    RBRACKET        reduce using rule 4 (contents -> key DOS_PUNTOS value COMA contents .)
+
+
+state 37
+
+    (23) menor -> NUMBER MENOR NUMBER .
+
+    COMA            reduce using rule 23 (menor -> NUMBER MENOR NUMBER .)
+    RBRACKET        reduce using rule 23 (menor -> NUMBER MENOR NUMBER .)
+
+
+state 38
+
+    (24) mayor -> NUMBER MAYOR NUMBER .
+
+    COMA            reduce using rule 24 (mayor -> NUMBER MAYOR NUMBER .)
+    RBRACKET        reduce using rule 24 (mayor -> NUMBER MAYOR NUMBER .)
+
+
+state 39
+
+    (25) igual -> NUMBER IGUAL NUMBER .
+
+    COMA            reduce using rule 25 (igual -> NUMBER IGUAL NUMBER .)
+    RBRACKET        reduce using rule 25 (igual -> NUMBER IGUAL NUMBER .)
+
+
+state 40
+
+    (26) mayigual -> NUMBER MAYIGUAL NUMBER .
+
+    COMA            reduce using rule 26 (mayigual -> NUMBER MAYIGUAL NUMBER .)
+    RBRACKET        reduce using rule 26 (mayigual -> NUMBER MAYIGUAL NUMBER .)
+
+
+state 41
+
+    (27) menigual -> NUMBER MENIGUAL NUMBER .
+
+    COMA            reduce using rule 27 (menigual -> NUMBER MENIGUAL NUMBER .)
+    RBRACKET        reduce using rule 27 (menigual -> NUMBER MENIGUAL NUMBER .)
+
+
+state 42
+
+    (14) arrayobjects -> LCORCHETE valores RCORCHETE .
+
+    COMA            reduce using rule 14 (arrayobjects -> LCORCHETE valores RCORCHETE .)
+    RBRACKET        reduce using rule 14 (arrayobjects -> LCORCHETE valores RCORCHETE .)
+
+
+state 43
+
+    (16) valores -> ajson opcional .
+
+    RCORCHETE       reduce using rule 16 (valores -> ajson opcional .)
+
+
+state 44
+
+    (17) valores -> ajson COMA . valores
+    (5) opcional -> COMA .
+    (16) valores -> . ajson opcional
+    (17) valores -> . ajson COMA valores
+    (1) ajson -> . LBRACKET contents RBRACKET
+    (2) ajson -> . LBRACKET RBRACKET
+
+    RCORCHETE       reduce using rule 5 (opcional -> COMA .)
+    LBRACKET        shift and go to state 2
+
+    ajson                          shift and go to state 35
+    valores                        shift and go to state 45
+
+state 45
+
+    (17) valores -> ajson COMA valores .
+
+    RCORCHETE       reduce using rule 17 (valores -> ajson COMA valores .)
+

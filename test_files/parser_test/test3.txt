@@ -1,0 +1,16 @@
+
+{
+    primera: {
+              segunda: {
+                        tercera: {
+                                  cuarta: {
+                                           funciona: 1,
+                                           clave_1: 2,
+                                           clave_2: 3
+                                          },
+                                  clave_3: 12,
+                                  },
+                        clave_4: 32,
+                        }
+              }
+}
